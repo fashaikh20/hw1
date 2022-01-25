@@ -95,7 +95,7 @@
 -- TODO!
 
 -- Assignment 1 Code Start
-DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS movie;
 DROP TABLE IF EXISTS top_cast;
 
 -- Create Tables
@@ -108,9 +108,17 @@ CREATE TABLE movie (
 );
 
 CREATE TABLE top_cast (
-    id INTEGER PRIMARY KEY AUTOINCREMENT
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     actor_name TEXT,
     character_name TEXT,
     movie_id TEXT,
     director TEXT
 );
+
+-- INSERT INFORMATION
+INSERT INTO movie 
+    ( title, year_released, MPAA_rating, director )
+VALUES
+    ("Batman Begins", 2005, "PG-13", "Christoper Nolan"),
+    ("The Dark Knight", 2008, "PG-13", "Christoper Nolan"),
+    ("The Dark Knight Rises", 2012, "PG-13", "Christoper Nolan");
