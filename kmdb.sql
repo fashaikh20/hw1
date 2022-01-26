@@ -67,14 +67,87 @@
 .headers off
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
--- TODO!
+DROP TABLE IF EXISTS movie;
+DROP TABLE IF EXISTS characters;
+DROP TABLE IF EXISTS top_cast;
+
 
 -- Create new tables, according to your domain model
--- TODO!
+
+CREATE TABLE movie (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    year_released TEXT,
+    MPAA_rating TEXT,
+    director TEXT
+);
+
+CREATE TABLE characters (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER,
+    character_name TEXT
+ );
+
+CREATE TABLE top_cast (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    character_id INTEGER,
+    top_cast_name TEXT
+    
+);
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+
+INSERT INTO movie 
+    ( title, year_released, MPAA_rating, director )
+VALUES
+    ("Batman Begins", 2005, "PG-13", "Christoper Nolan"),
+    ("The Dark Knight", 2008, "PG-13", "Christoper Nolan"),
+    ("The Dark Knight Rises", 2012, "PG-13", "Christoper Nolan");
+
+INSERT INTO characters 
+    ( movie_id, character_name )
+VALUES
+    ( 1, "Bruce Wayne"),
+    ( 1, "Alfred"),
+    ( 1, "Ra's Al Ghul"),
+    ( 1, "Rachel Dawes"),
+    ( 1, "Commissioner Gordon"),
+    
+    ( 2, "Bruce Wayne"),
+    ( 2, "Alfred"),
+    ( 2, "Harvey Dent"),
+    ( 2, "Rachel Dawes"),
+    ( 2, "Commissioner Gordon"),
+
+    ( 3, "Bruce Wayne"),
+    ( 3, "Alfred"),
+    ( 3, "Bane"),
+    ( 3, "John Blake"),
+    ( 3, "Selina Kyle");
+
+
+INSERT INTO top_cast
+    ( character_id, top_cast_name )
+VALUES
+    ( 1, "Christian Bale"),
+    ( 2, "Michael Caine"),
+    ( 3, "Liam Neeson"),
+    ( 4, "Katie Holmes"),
+    ( 5, "Gary Oldman"),
+    
+    ( 6, "Christian Bale"),
+    ( 7, "Michael Caine"),
+    ( 8, "Aaron Eckhart"),
+    ( 9, "Maggie Gyllenhaal"),
+    ( 10, "Gary Oldman"),
+
+    ( 11, "Christian Bale"),
+    ( 12, "Michael Caine"),
+    ( 13, "Tom Hardy"),
+    ( 14, "Joseph Gordon-Levitt"),
+    ( 15, "Anne Hathaway");
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -94,31 +167,13 @@
 -- The SQL statement for the cast output
 -- TODO!
 
--- Assignment 1 Code Start
-DROP TABLE IF EXISTS movie;
-DROP TABLE IF EXISTS top_cast;
 
--- Create Tables
-CREATE TABLE movie (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT,
-    year_released TEXT,
-    MPAA_rating TEXT,
-    director TEXT
-);
 
-CREATE TABLE top_cast (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    actor_name TEXT,
-    character_name TEXT,
-    movie_id TEXT,
-    director TEXT
-);
 
--- INSERT INFORMATION
-INSERT INTO movie 
-    ( title, year_released, MPAA_rating, director )
-VALUES
-    ("Batman Begins", 2005, "PG-13", "Christoper Nolan"),
-    ("The Dark Knight", 2008, "PG-13", "Christoper Nolan"),
-    ("The Dark Knight Rises", 2012, "PG-13", "Christoper Nolan");
+
+
+
+       
+
+
+
