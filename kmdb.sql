@@ -156,6 +156,7 @@ VALUES
 
 -- The SQL statement for the movies output
 -- TODO!
+SELECT title, year_released, MPAA_rating, director FROM movie;
 
 -- Prints a header for the cast output
 .print ""
@@ -166,6 +167,10 @@ VALUES
 
 -- The SQL statement for the cast output
 -- TODO!
+SELECT movie.title, top_cast.top_cast_name, characters.character_name
+FROM movie 
+    INNER JOIN characters ON movie.id = characters.movie_id
+    INNER JOIN top_cast ON top_cast.character_id = characters.id;
 
 
 
